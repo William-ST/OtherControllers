@@ -44,6 +44,36 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
 
     @IBAction func actionStart(_ sender: AnyObject) {
+        
+        let hilo = DispatchQueue(label: "pe.ourlimm.OtherControllers")
+        let hilo2 = DispatchQueue(label: "pe.ourlimm.OtherControllers")
+        
+        hilo.async {
+            for i in 0...10000 {
+                print("A: \(i)")
+                self.prgLoading.progress = (Float(i)/10000.0)
+            }
+        }
+        
+        
+        
+        hilo2.async {
+            for i in 0...10000 {
+                print("B: \(i)")
+                self.prgLoading.progress = (Float(i)/10000.0)
+            }
+        }
+        
+        /*
+        hilo.async {
+            for i in 0...10000 {
+                print("i: \(i)")
+                self.prgLoading.progress = (Float(i)/10000.0)
+            }
+        }
+        */
+        
+        
     }
     
     @IBAction func DatePickerValueChanged(_ sender: UIDatePicker) {
